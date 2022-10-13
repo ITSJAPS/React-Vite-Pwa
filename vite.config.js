@@ -9,17 +9,22 @@ import manifest from './public/manifest.json';
 export default defineConfig({
  // plugins: [react()
  
- plugins: [react(),
+ plugins: [
+  react(),
   VitePWA({
-  manifest,
-  includeAssets: ['logoDragon.svg', 'logoDragon.ico', 'robots.txt', 'logoDragon.png'],
-  // switch to "true" to enable sw on development
-  devOptions: {
-    enabled: true,
-  },
-  workbox: {
-    globPatterns: ['**/*.{js,ts,css,html}', '**/*.{svg,png,jpg,gif}'],
-  },
+    manifest,
+    includeAssets: ['logoDragon.svg', 'logoDragon.ico', 'logoDragon.png'],
+    
+    // switch to "true" to enable sw on development
+    devOptions: {
+      enabled: true,
+    },
+    workbox: {
+      globPatterns: ['**/*.{js,ts,css,html}', '**/*.{svg,png,jpg,gif}'],
+      
+      cleanupOutdatedCaches: false,
+    
+    },
  })
 ]
 })
